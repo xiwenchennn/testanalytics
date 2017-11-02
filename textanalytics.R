@@ -2,6 +2,8 @@ library(stringr)
 setwd("/Users/xiwenchen/Dropbox/DSO 545 statistical computing and data visualization/week 11")
 email = readRDS("email.rds")
 
+#Text data
+
 #1
 print("\"")
 #\ 说明特殊符号没有特殊意义，转意。
@@ -70,6 +72,37 @@ header = str_sub(email,1, breaks[,1])
 body = str_sub(email, start = breaks[,2])
 
 
+#Messy
+#1
+fruit <- c("apple", "banana", "pear", "pineapple")
 
+#2
+str_detect(fruit,"a")#看每个character有没有a
+str_detect(fruit,"^a")#看第一个元素是不是a
+str_detect(fruit,"a$")#看最后一个元素是不是a
+str_detect(fruit, "[aeiou]") #看元素里面有没有[]里面的字母的任何一个
+str_detect(fruit, "[a-d]")#看有没有a-d里面任何一个
+
+#3
+#detect a string that starts with "a" and ends with "e"
+str_detect(fruit,"^a[a-z]*e$")
+
+#4
+phone = c("213 740 4826","213-740-4826", "(213) 740-4826")
+parser = "[(]?[0-9]{3}[)]?[ -.()][0-9]{3}[ -.()]?[0-9]{4,4}"
+str_detect(phone, parser)
+
+#5
+email[10]
+cat(email[18])
+
+str_extract(body, parser)
+
+#6
+
+
+par = "[0-9]{5}(-[0-9]{4})?"
+str_extract(body, par)
+##把一堆数字group起来就就用()
 
 
